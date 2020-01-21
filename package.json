@@ -1,5 +1,5 @@
 {
-  "name": "express-auth-server",
+  "name": "express-auth-service",
   "version": "0.0.1",
   "description": "",
   "main": "./src/index.js",
@@ -42,5 +42,13 @@
     "standard": "^14.3.1",
     "supertest": "^4.0.2",
     "uuid": "^3.3.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jquiceno/auth-service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jquiceno/auth-service/issues"
+  },
+  "homepage": "https://github.com/jquiceno/auth-service#readme"
 }
