@@ -1,6 +1,6 @@
 'use strict'
 
-const { Server } = require('./')
+const Server = require('./server')
 
 const PORT = process.env.PORT || 3000
 

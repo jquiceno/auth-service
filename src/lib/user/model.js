@@ -19,13 +19,6 @@ const schema = new Schema({
   timestamps: {
     createdAt: 'created',
     updatedAt: 'updated'
-  },
-  toObject: {
-    transform: (doc, ret) => {
-      delete ret.password
-      delete ret.__v
-      ret._id = ret._id.toString()
-    }
   }
 })
 

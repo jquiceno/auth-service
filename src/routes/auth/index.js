@@ -5,6 +5,7 @@ const router = Router()
 const { basic } = require('../../lib/strategy')
 const { Auth } = require('../../lib')
 const passport = require('passport')
+const defaults = require('defaults')
 
 passport.use('basic', basic)
 
@@ -51,19 +52,31 @@ const rt = [{
 }]
 
 module.exports = (options = {}) => {
-  const { routes = {} } = options
+  options = defaults(options, {
+    routes: []
+  })
 
-  rt.map(r => {
-    const route = routes[r.path] ? routes[r.path] : null
-    if (route) {
-      if (route.md) r.md = [...route.md]
+  const { routes } = options
 
-      if (route.strategy) {
-        passport.use(route.strategy.name, route.strategy)
-        r.strategy = passport.authenticate(route.strategy.name, { session: false })
-      }
+  routes.map(r => {
+    const { path, md, strategy } = r
+
+    const index = rt.findIndex(el => el.path === path)
+
+    if (index === -1) return
+
+    if (strategy) {
+      passport.use(strategy.name, strategy.strategy)
+      rt[index].strategy = passport.authenticate(strategy.name, { session: false })
     }
 
+    rt[index] = Object.assign(r, {
+      ...rt[index],
+      md: !Array.isArray(md) ? rt[index].md : md
+    })
+  })
+
+  rt.map(r => {
     if (r.strategy) r.md.push(r.strategy)
 
     router[r.method](r.path, r.md, r.handler)

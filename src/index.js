@@ -2,5 +2,5 @@
 
 module.exports = {
   ...require('./lib'),
-  Server: require('./server')
+  routes: require('./routes')
 }
