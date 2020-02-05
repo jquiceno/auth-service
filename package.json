@@ -1,6 +1,6 @@
 {
   "name": "express-auth-service",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple auth service created with express and using jwt",
   "main": "./src/index.js",
   "scripts": {
