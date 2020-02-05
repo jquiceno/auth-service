@@ -2,13 +2,14 @@
 
 const { Router } = require('express')
 const router = Router()
-const { basic } = require('../../lib/strategy')
+const { basic, local } = require('../../lib/strategy')
 const { Auth } = require('../../lib')
 const passport = require('passport')
 const defaults = require('defaults')
 const User = require('../../lib/user')
 
 passport.use('basic', basic)
+passport.use('local', local)
 
 const rt = [{
   path: '/signup',
@@ -33,7 +34,7 @@ const rt = [{
 {
   path: '/signin',
   method: 'post',
-  strategy: passport.authenticate('basic', { session: false }),
+  strategy: [passport.authenticate(['basic', 'local'], { session: false })],
   md: [],
   async handler (req, res, next) {
     let response = {}

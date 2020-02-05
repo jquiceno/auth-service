@@ -2,5 +2,6 @@
 
 module.exports = {
   basic: require('./basic'),
-  jwt: require('./jwt')
+  jwt: require('./jwt'),
+  local: require('./local')
 }
