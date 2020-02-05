@@ -6,11 +6,32 @@ const { basic } = require('../../lib/strategy')
 const { Auth } = require('../../lib')
 const passport = require('passport')
 const defaults = require('defaults')
+const User = require('../../lib/user')
 
 passport.use('basic', basic)
 
 const rt = [{
-  path: '/sigin',
+  path: '/signup',
+  method: 'post',
+  md: [],
+  async handler (req, res, next) {
+    try {
+      const data = req.body
+      const user = await User.add(data)
+
+      const response = {
+        data: user,
+        statusCode: 201
+      }
+
+      return res.status(response.statusCode).json(response)
+    } catch (error) {
+      return next(error)
+    }
+  }
+},
+{
+  path: '/signin',
   method: 'post',
   strategy: passport.authenticate('basic', { session: false }),
   md: [],

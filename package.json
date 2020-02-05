@@ -1,7 +1,7 @@
 {
   "name": "express-auth-service",
   "version": "0.0.2",
-  "description": "",
+  "description": "Simple auth service created with express and using jwt",
   "main": "./src/index.js",
   "scripts": {
     "start": "node ./app.js",
@@ -14,7 +14,8 @@
   "keywords": [
     "auth",
     "service",
-    "express"
+    "express",
+    "jwt"
   ],
   "author": "jquiceno",
   "license": "ISC",
