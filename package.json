@@ -22,7 +22,7 @@
   "dependencies": {
     "@hapi/boom": "^8.0.1",
     "@hapi/joi": "^16.1.8",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "defaults": "^1.0.3",
     "dotenv": "^8.2.0",
